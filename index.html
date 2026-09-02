@@ -3,200 +3,500 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Portfolio - สิริลักษณ์ ผาดผ่อง (ปอ)</title>
+    <!-- นำเข้าฟอนต์ Google Font: Sarabun และ Kanit -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #2c7a7b;
+            --primary-light: #4fd1c5;
+            --accent-color: #3182ce;
+            --bg-color: #e6fffa;
+            --card-bg: #ffffff;
+            --text-main: #2d3748;
+            --text-muted: #718096;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Kanit', sans-serif, Arial;
+            font-family: 'Kanit', 'Sarabun', sans-serif;
         }
 
         body {
-            background-color: #f4f7f6;
-            color: #333;
+            background: linear-gradient(135deg, #e6fffa 0%, #ebf8ff 100%);
+            color: var(--text-main);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* แถบเมนูนำทาง Header & Navigation */
-        header {
-            background-color: #2c3e50;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            max-width: 1000px;
-            margin: 0 auto;
+            padding-bottom: 2rem;
         }
 
-        .logo {
-            color: #fff;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 10px;
-        }
-
-        .nav-btn {
-            background: none;
-            border: none;
-            color: #ecf0f1;
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background 0.3s;
-        }
-
-        .nav-btn:hover, .nav-btn.active {
-            background-color: #3498db;
-            color: #fff;
-        }
-
-        /* ส่วนจัดการการแสดงผลของแต่ละหน้า */
-        main {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            flex: 1;
+        /* Header */
+        header {
+            text-align: center;
+            padding: 2.5rem 1rem 1.5rem;
             width: 100%;
         }
 
+        header h1 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 0.3rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 0.6rem;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(44, 122, 123, 0.15);
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 15px;
+            z-index: 100;
+            display: flex;
+            gap: 0.5rem;
+            max-width: 95%;
+            overflow-x: auto;
+        }
+
+        .nav-btn {
+            border: none;
+            background: transparent;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(79, 209, 197, 0.2);
+            color: var(--primary-color);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            box-shadow: 0 4px 10px rgba(49, 130, 206, 0.3);
+        }
+
+        /* Main Container */
+        main {
+            width: 100%;
+            max-width: 850px;
+            padding: 0 1rem;
+        }
+
         .page-section {
-            display: none; /* ซ่อนทุกหน้าไว้ก่อน */
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: none;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255,255,255,0.8);
+            position: relative;
         }
 
         .page-section.active {
-            display: block; /* แสดงเฉพาะหน้าที่เลือก */
-            animation: fadeIn 0.4s ease-in-out;
+            display: block;
+            animation: slideUp 0.4s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ตกแต่งเนื้อหาแต่ละส่วน */
-        h1 { color: #2c3e50; margin-bottom: 1rem; }
-        p { line-height: 1.6; margin-bottom: 1rem; color: #555; }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1rem;
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.6rem;
+            border-bottom: 3px solid var(--primary-light);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+        /* Elements Styling */
+        p {
+            line-height: 1.7;
+            color: #4a5568;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        /* Page 2: About Me */
+        .profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            border: 4px solid #fff;
+            outline: 2px solid var(--primary-light);
+            margin: 0 auto;
+        }
+
+        .info-list {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .info-item {
+            background: #f7fafc;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+            border-left: 4px solid var(--primary-light);
+        }
+
+        .contact-box {
+            background: #ebf8ff;
+            padding: 1rem;
+            border-radius: 12px;
             margin-top: 1rem;
         }
 
-        .card {
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            padding: 1rem;
-            background: #fafafa;
+        .contact-box div {
+            margin-bottom: 0.3rem;
+            font-weight: 500;
         }
 
-        .card h3 { margin-bottom: 0.5rem; color: #2980b9; }
+        /* Page 3 & 4 Cards */
+        .card {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #edf2f7;
+            transition: transform 0.2s;
+        }
 
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background: #e2e8f0;
-            color: #666;
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .card h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e6fffa;
+            color: var(--primary-color);
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
             font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .img-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .img-grid img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+        }
+
+        /* Skills Box */
+        .skills-box {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px dashed var(--primary-light);
+            margin-top: 0.8rem;
+        }
+
+        /* Page 5 Thank You */
+        .thankyou-box {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .icons-row {
+            font-size: 2rem;
+            margin: 1rem 0;
+        }
+
+        .dream-card {
+            background: linear-gradient(135deg, #e6fffa, #ebf8ff);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+        }
+
+        /* Page Footer & Pagination */
+        .page-footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #edf2f7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-number {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .page-nav-btn {
+            background: #edf2f7;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .page-nav-btn:hover {
+            background: #e2e8f0;
+        }
+
+        @media (max-width: 600px) {
+            .page-section { padding: 1.5rem; }
+            header h1 { font-size: 1.8rem; }
+            .profile-container { flex-direction: column; text-align: center; }
+            .info-list { width: 100%; text-align: left; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header>
-        <nav>
-            <div class="logo">MyPortfolio</div>
-            <ul class="nav-links">
-                <li><button class="nav-btn active" onclick="switchPage('home', this)">หน้าแรก</button></li>
-                <li><button class="nav-btn" onclick="switchPage('about', this)">เกี่ยวกับฉัน</button></li>
-                <li><button class="nav-btn" onclick="switchPage('projects', this)">ผลงาน</button></li>
-                <li><button class="nav-btn" onclick="switchPage('contact', this)">ติดต่อ</button></li>
-            </ul>
-        </nav>
+        <h1>✨ แฟ้มสะสมผลงาน (Portfolio) ✨</h1>
+        <p>💫 นางสาวสิริลักษณ์ ผาดผ่อง 💫</p>
     </header>
 
+    <!-- Navigation Tabs -->
+    <nav>
+        <button class="nav-btn active" onclick="switchPage(1)">1. คำนำ</button>
+        <button class="nav-btn" onclick="switchPage(2)">2. About Me</button>
+        <button class="nav-btn" onclick="switchPage(3)">3. มหาวิทยาลัยที่สนใจ</button>
+        <button class="nav-btn" onclick="switchPage(4)">4. ผลงานและรางวัล</button>
+        <button class="nav-btn" onclick="switchPage(5)">5. ขอบคุณ</button>
+    </nav>
+
+    <!-- Main Content Area -->
     <main>
-        <section id="home" class="page-section active">
-            <img src="https://via.placeholder.com/150" alt="Profile" class="profile-img">
-            <h1>สวัสดีครับ! ยินดีต้อนรับสู่ Portfolio ของผม</h1>
-            <p>ผมเป็นนักเรียนจากแผนการเรียนเตรียมวิศวะ</p>
-            <button class="nav-btn" style="background-color: #27ae60;" onclick="switchPage('projects', document.querySelectorAll('.nav-btn')[2])">ดูผลงานของฉัน</button>
-        </section>
 
-        <section id="about" class="page-section">
-            <h1>เกี่ยวกับฉัน</h1>
-            <p><strong>ชื่อ-นามสกุล:</strong> นายสมชาย สายลุย</p>
-            <p><strong>ทักษะความสามารถ:</strong> HTML, CSS, JavaScript, Responsive Design</p>
-            <p><strong>ประวัติการศึกษา:</strong> ปริญญาตรี สาขาวิทยาการคอมพิวเตอร์</p>
-        </section>
+        <!-- หน้า 1: คำนำ -->
+        <section id="page-1" class="page-section active">
+            <h2>📖 คำนำ</h2>
+            <p>
+                แฟ้มสะสมผลงาน (Portfolio) ฉบับนี้จัดทำขึ้นเพื่อรวบรวมประวัติส่วนตัว ประวัติการศึกษา ผลงาน โครงงาน และกิจกรรมต่าง ๆ ที่แสดงถึงความสามารถ ความสนใจ และความตั้งใจของข้าพเจ้า
+            </p>
+            <p>
+                ข้าพเจ้าหวังเป็นอย่างยิ่งว่าแฟ้มสะสมผลงานเล่มนี้จะช่วยให้ผู้อ่านได้รู้จักตัวตน ความสามารถ และเป้าหมายในการศึกษาต่อของข้าพเจ้ามากยิ่งขึ้น และเป็นส่วนหนึ่งที่แสดงถึงความมุ่งมั่นในการพัฒนาตนเองเพื่อก้าวไปสู่ความสำเร็จในอนาคต
+            </p>
+            <p style="text-align: right; margin-top: 2rem; font-weight: 500;">
+                นางสาวสิริลักษณ์ ผาดผ่อง<br>
+                <span style="font-size: 0.9rem; color: var(--text-muted);">ผู้จัดทำ</span>
+            </p>
 
-        <section id="projects" class="page-section">
-            <h1>ผลงานของฉัน</h1>
-            <div class="project-grid">
-                <div class="card">
-                    <h3>Project A</h3>
-                    <p>ระบบจัดการข้อมูลร้านค้า พัฒนาด้วย HTML/CSS และ JS</p>
-                </div>
-                <div class="card">
-                    <h3>Project B</h3>
-                    <p>เว็บไซต์แนะนำสถานที่ท่องเที่ยว Responsive รองรับมือถือ</p>
-                </div>
+            <div class="page-footer">
+                <button class="page-nav-btn" style="visibility: hidden;">ย้อนกลับ</button>
+                <span class="page-number">หน้า 1 / 5</span>
+                <button class="page-nav-btn" onclick="switchPage(2)">ถัดไป ➔</button>
             </div>
         </section>
 
-        <section id="contact" class="page-section">
-            <h1>ช่องทางการติดต่อ</h1>
-            <p><strong>Email:</strong> myemail@example.com</p>
-            <p><strong>Tel:</strong> 081-234-5678</p>
-            <p><strong>GitHub:</strong> github.com/yourusername</p>
+        <!-- หน้า 2: About Me -->
+        <section id="page-2" class="page-section">
+            <h2>👤 About Me</h2>
+            <div class="profile-container">
+                <img src="45E1DEB7-D377-4807-8F1D-0FC5536C5C96.png" alt="รูปโปรไฟล์" class="profile-img" onerror="this.src='https://via.placeholder.com/200?text=Profile+Image'">
+                <div class="info-list">
+                    <div class="info-item"><strong>ชื่อ-สกุล :</strong> นางสาวสิริลักษณ์ ผาดผ่อง (ปอ)</div>
+                    <div class="info-item"><strong>วัน/เดือน/ปีเกิด :</strong> 18 ตุลาคม พ.ศ. 2551 (อายุ 17 ปี)</div>
+                    <div class="info-item"><strong>แผนการเรียน :</strong> เตรียมวิศวกรรมศาสตร์</div>
+
+                    <div class="contact-box">
+                        <div style="color: var(--primary-color); margin-bottom: 0.5rem;">📩 <strong>ช่องทางการติดต่อ</strong></div>
+                        <div>☎️ <strong>โทรศัพท์ :</strong> 090-199-4740</div>
+                        <div>📨 <strong>Facebook :</strong> Sirilak Phartpong</div>
+                        <div>📧 <strong>GMail :</strong> por99srl@gmail.com</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <button class="page-nav-btn" onclick="switchPage(1)">⬅️ ย้อนกลับ</button>
+                <span class="page-number">หน้า 2 / 5</span>
+                <button class="page-nav-btn" onclick="switchPage(3)">ถัดไป ➔</button>
+            </div>
         </section>
+
+        <!-- หน้า 3: มหาวิทยาลัยที่สนใจ -->
+        <section id="page-3" class="page-section">
+            <h2>🏫 มหาวิทยาลัยที่สนใจอยากจะเข้าศึกษาต่อ</h2>
+            
+            <div class="card">
+                <h3>🌱 มหาวิทยาลัยเกษตรศาสตร์ บางเขน</h3>
+                <p><strong>คณะศึกษาศาสตร์</strong> สาขาวิชาวิทยาศาสตร์ทั่วไป</p>
+            </div>
+
+            <div class="card">
+                <h3>💙 เหตุผลที่ฉันสนใจ</h3>
+                <p>
+                    ฉันมีความสนใจในวิชาวิทยาศาสตร์ เพราะเป็นวิชาที่ทำให้ได้เรียนรู้และค้นหาคำตอบจากสิ่งต่าง ๆ รอบตัว อีกทั้งยังชอบการทดลอง เพราะทำให้ได้ลงมือปฏิบัติจริง ได้สังเกตผล และเรียนรู้จากประสบการณ์
+                </p>
+                <p>
+                    นอกจากนี้ ฉันยังชอบการวิเคราะห์และการแก้ปัญหา เพราะทำให้ได้ฝึกคิดอย่างเป็นระบบ ใช้เหตุผล และค้นหาวิธีแก้ไขปัญหาอย่างเหมาะสม จึงมีความตั้งใจที่จะศึกษาต่อในคณะศึกษาศาสตร์ สาขาวิชาวิทยาศาสตร์ทั่วไป เพื่อพัฒนาทักษะและเรียนรู้การถ่ายทอดความรู้ให้ผู้อื่นเข้าใจได้ง่าย
+                </p>
+            </div>
+
+            <div class="card" style="border-left: 4px solid var(--accent-color);">
+                <h3>🎓 เป้าหมายของฉัน</h3>
+                <p>
+                    ตั้งใจเรียน พัฒนาทักษะด้านวิทยาศาสตร์ ฝึกการทดลอง การคิดวิเคราะห์ และการแก้ปัญหา เพื่อก้าวไปสู่เป้าหมายในการศึกษาต่อ และเติบโตเป็นครูวิทยาศาสตร์ที่ดีในอนาคต
+                </p>
+            </div>
+
+            <div class="page-footer">
+                <button class="page-nav-btn" onclick="switchPage(2)">⬅️ ย้อนกลับ</button>
+                <span class="page-number">หน้า 3 / 5</span>
+                <button class="page-nav-btn" onclick="switchPage(4)">ถัดไป ➔</button>
+            </div>
+        </section>
+
+        <!-- หน้า 4: ผลงานและรางวัล -->
+        <section id="page-4" class="page-section">
+            <h2>🏆 ผลงานและรางวัล</h2>
+
+            <!-- รางวัลที่ 1 -->
+            <div class="card">
+                <span class="badge">🥈 รองชนะเลิศอันดับ 1</span>
+                <h3>🏆 การแข่งขันศึกวัดเซียนปรากฏการณ์ธรรมชาติ</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">ระดับมัธยมศึกษาตอนปลาย</p>
+                
+                <div class="img-grid">
+                    <img src="IMG_6494.jpeg" alt="ภาพการแข่งขัน รูปที่ 1" onerror="this.src='https://via.placeholder.com/200x150?text=Competition+1'">
+                    <img src="IMG_6497.jpeg" alt="ภาพการแข่งขัน รูปที่ 2" onerror="this.src='https://via.placeholder.com/200x150?text=Competition+2'">
+                </div>
+
+                <div class="skills-box">
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.3rem;">✨ ทักษะที่ได้รับ</h4>
+                    <p style="font-size: 0.95rem; margin-bottom: 0;">
+                        ได้พัฒนาทักษะการคิดวิเคราะห์ การนำความรู้ด้านวิทยาศาสตร์มาประยุกต์ใช้ในการแข่งขัน และการแก้ปัญหาอย่างเป็นระบบ รวมถึงได้ฝึกการทำงานร่วมกับผู้อื่น การวางแผน และการตัดสินใจอย่างมีเหตุผล
+                    </p>
+                </div>
+            </div>
+
+            <!-- รางวัลที่ 2 -->
+            <div class="card">
+                <span class="badge" style="background: #fefcbf; color: #744210;">⭐ รางวัลเชิดชูเกียรติ</span>
+                <h3>🎖️ รางวัล “นักเรียนประพฤติดี”</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">ประจำปีการศึกษา 2568</p>
+                <p>ได้รับรางวัลจากการมีคะแนนความประพฤติดี มีระเบียบวินัย มีความรับผิดชอบต่อสถานศึกษา</p>
+                
+                <div class="img-grid">
+                    <img src="IMG_3586.jpeg" alt="รางวัลนักเรียนประพฤติดี รูปที่ 1" onerror="this.src='https://via.placeholder.com/200x150?text=Award+1'">
+                    <img src="IMG_6499.png" alt="รางวัลนักเรียนประพฤติดี รูปที่ 2" onerror="this.src='https://via.placeholder.com/200x150?text=Award+2'">
+                </div>
+
+                <div class="skills-box">
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.3rem;">🌟 ทักษะและสิ่งที่ได้รับ</h4>
+                    <p style="font-size: 0.95rem; margin-bottom: 0;">
+                        รางวัลนี้สะท้อนถึงความรับผิดชอบ ความมีวินัย และการปฏิบัติตนตามกฎระเบียบของสถานศึกษา ทำให้ได้ฝึกความรับผิดชอบต่อตนเองและส่วนรวม
+                    </p>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <button class="page-nav-btn" onclick="switchPage(3)">⬅️ ย้อนกลับ</button>
+                <span class="page-number">หน้า 4 / 5</span>
+                <button class="page-nav-btn" onclick="switchPage(5)">ถัดไป ➔</button>
+            </div>
+        </section>
+
+        <!-- หน้า 5: ขอบคุณ -->
+        <section id="page-5" class="page-section">
+            <div class="thankyou-box">
+                <div class="icons-row">👩🏻‍🏫 🔬 🧪 📚 🌱</div>
+                <h2 style="border: none; justify-content: center; font-size: 2.2rem;">ขอบคุณค่ะ</h2>
+                <p style="font-size: 1.1rem;">ขอบคุณที่เข้ามาเยี่ยมชมแฟ้มสะสมผลงาน</p>
+
+                <div class="dream-card">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">🌱 ความฝันของฉัน 🌱</h3>
+                    <p>
+                        ฉันมีความตั้งใจที่จะศึกษาต่อ <strong>คณะศึกษาศาสตร์ สาขาวิชาวิทยาศาสตร์ทั่วไป</strong> และมุ่งมั่นที่จะก้าวไปสู่การเป็น <strong>"ครูวิทยาศาสตร์"</strong> ที่สามารถถ่ายทอดความรู้ สร้างแรงบันดาลใจ และทำให้นักเรียนสนุกกับการเรียนรู้
+                    </p>
+                </div>
+
+                <div class="icons-row">⚗️ 🔬 🧬 🧪</div>
+                <p style="font-weight: 500; color: var(--text-main);">นางสาวสิริลักษณ์ ผาดผ่อง</p>
+            </div>
+
+            <div class="page-footer">
+                <button class="page-nav-btn" onclick="switchPage(4)">⬅️ ย้อนกลับ</button>
+                <span class="page-number">หน้า 5 / 5</span>
+                <button class="page-nav-btn" style="visibility: hidden;">ถัดไป</button>
+            </div>
+        </section>
+
     </main>
 
-    <footer>
-        <p>&copy; 2026 My Portfolio. All rights reserved.</p>
-    </footer>
-
+    <!-- JavaScript สำหรับระบบเปลี่ยนหน้า -->
     <script>
-        function switchPage(pageId, element) {
-            // 1. ซ่อนทุกหน้า (ลบ class active ออก)
-            const pages = document.querySelectorAll('.page-section');
-            pages.forEach(page => page.classList.remove('active'));
+        function switchPage(pageNumber) {
+            // 1. ซ่อนทุกหน้า
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.remove('active'));
 
-            // 2. แสดงหน้าที่เลือก
-            document.getElementById(pageId).classList.add('active');
+            // 2. ปลดล็อกปุ่ม Nav ทุกปุ่ม
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => btn.classList.remove('active'));
 
-            // 3. เปลี่ยนสถานะปุ่มใน Navbar ให้กดแล้วมีไฮไลท์
-            const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            element.classList.add('active');
+            // 3. แสดงหน้าที่เลือก
+            const targetSection = document.getElementById(`page-${pageNumber}`);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // 4. ไฮไลท์ปุ่ม Nav หน้าปัจจุบัน
+            if (navButtons[pageNumber - 1]) {
+                navButtons[pageNumber - 1].classList.add('active');
+            }
+
+            // เลื่อนหน้าจอขึ้นบนสุดเมื่อเปลี่ยนหน้า
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
