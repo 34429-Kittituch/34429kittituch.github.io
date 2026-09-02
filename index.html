@@ -1,81 +1,203 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>หน้าแนะนำตัวของผม</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Kanit', sans-serif, Arial;
+        }
 
-  <style>
-    body {
-      background-color: #6699FF;
-      color: #333;
-      text-align: center;
-      padding: 50px;
-      font-family: sans-serif;
-    }
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    .card {
-      background: white;
-      border-radius: 30px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      max-width: 500px;
-      margin: 0 auto;
-      padding: 30px;
-    }
+        /* แถบเมนูนำทาง Header & Navigation */
+        header {
+            background-color: #2c3e50;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-    h1 {
-      color: #2c3e50;
-    }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
+        .logo {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
 
-    .btn {
-      display: inline-block;
-      background-color: #3498db;
-      color: white;
-      padding: 12px 20px;
-      text-decoration: none;
-      border-radius: 8px;
-      margin-top: 15px;
-    }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+        }
 
-    .btn:hover {
-      background-color: #217dbb;
-    }
-  </style>
+        .nav-btn {
+            background: none;
+            border: none;
+            color: #ecf0f1;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        /* ส่วนจัดการการแสดงผลของแต่ละหน้า */
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        .page-section {
+            display: none; /* ซ่อนทุกหน้าไว้ก่อน */
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .page-section.active {
+            display: block; /* แสดงเฉพาะหน้าที่เลือก */
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ตกแต่งเนื้อหาแต่ละส่วน */
+        h1 { color: #2c3e50; margin-bottom: 1rem; }
+        p { line-height: 1.6; margin-bottom: 1rem; color: #555; }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 1rem;
+            background: #fafafa;
+        }
+
+        .card h3 { margin-bottom: 0.5rem; color: #2980b9; }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #e2e8f0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
-
 <body>
 
-  <div class="card">
+    <header>
+        <nav>
+            <div class="logo">MyPortfolio</div>
+            <ul class="nav-links">
+                <li><button class="nav-btn active" onclick="switchPage('home', this)">หน้าแรก</button></li>
+                <li><button class="nav-btn" onclick="switchPage('about', this)">เกี่ยวกับฉัน</button></li>
+                <li><button class="nav-btn" onclick="switchPage('projects', this)">ผลงาน</button></li>
+                <li><button class="nav-btn" onclick="switchPage('contact', this)">ติดต่อ</button></li>
+            </ul>
+        </nav>
+    </header>
 
-    <h1>ยินดีต้อนรับสู่โปรไฟล์ของผม 👋</h1>
+    <main>
+        <section id="home" class="page-section active">
+            <img src="https://via.placeholder.com/150" alt="Profile" class="profile-img">
+            <h1>สวัสดีครับ/ค่ะ! ยินดีต้อนรับสู่ Portfolio ของฉัน</h1>
+            <p>ฉันเป็นนักพัฒนาเว็บมือใหม่ที่หลงใหลในการสร้างสรรค์เว็บไซต์และแอปพลิเคชัน</p>
+            <button class="nav-btn" style="background-color: #27ae60;" onclick="switchPage('projects', document.querySelectorAll('.nav-btn')[2])">ดูผลงานของฉัน</button>
+        </section>
 
-    <p>
-      สวัสดีครับ! ผมชื่อ
-      <strong>กิตติธัช เพชรประไพ</strong>
-    </p>
+        <section id="about" class="page-section">
+            <h1>เกี่ยวกับฉัน</h1>
+            <p><strong>ชื่อ-นามสกุล:</strong> นายสมชาย สายลุย</p>
+            <p><strong>ทักษะความสามารถ:</strong> HTML, CSS, JavaScript, Responsive Design</p>
+            <p><strong>ประวัติการศึกษา:</strong> ปริญญาตรี สาขาวิทยาการคอมพิวเตอร์</p>
+        </section>
 
-    <p>
-      ขณะนี้กำลังศึกษาในด้าน
-      <strong>Engineering</strong>
-      และสนใจด้าน
-      <strong>Pharmacy</strong>
-    </p>
+        <section id="projects" class="page-section">
+            <h1>ผลงานของฉัน</h1>
+            <div class="project-grid">
+                <div class="card">
+                    <h3>Project A</h3>
+                    <p>ระบบจัดการข้อมูลร้านค้า พัฒนาด้วย HTML/CSS และ JS</p>
+                </div>
+                <div class="card">
+                    <h3>Project B</h3>
+                    <p>เว็บไซต์แนะนำสถานที่ท่องเที่ยว Responsive รองรับมือถือ</p>
+                </div>
+            </div>
+        </section>
 
-    <p>
-      นี่คือเว็บไซต์แรกของผมที่โฮสต์บน GitHub Pages! 🚀
-    </p>
+        <section id="contact" class="page-section">
+            <h1>ช่องทางการติดต่อ</h1>
+            <p><strong>Email:</strong> myemail@example.com</p>
+            <p><strong>Tel:</strong> 081-234-5678</p>
+            <p><strong>GitHub:</strong> github.com/yourusername</p>
+        </section>
+    </main>
 
-    <!-- ปุ่มไปหน้า Portfolio -->
-    <a href="portfolio.html" class="btn">
-      📁 ดูแฟ้มสะสมงานของผม
-    </a>
+    <footer>
+        <p>&copy; 2026 My Portfolio. All rights reserved.</p>
+    </footer>
 
-  </div>
+    <script>
+        function switchPage(pageId, element) {
+            // 1. ซ่อนทุกหน้า (ลบ class active ออก)
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => page.classList.remove('active'));
 
+            // 2. แสดงหน้าที่เลือก
+            document.getElementById(pageId).classList.add('active');
+
+            // 3. เปลี่ยนสถานะปุ่มใน Navbar ให้กดแล้วมีไฮไลท์
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+        }
+    </script>
 </body>
 </html>
