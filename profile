@@ -1,0 +1,114 @@
+ <!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Portfolio</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, "Noto Sans Thai", sans-serif;
+            background: linear-gradient(
+                135deg,
+                #111827,
+                #2563eb
+            );
+        }
+        /* กล่องหน้า Home */
+        .home {
+            text-align: center;
+            color: white;
+            padding: 30px;
+        }
+        /* รูปภาพ */
+        .home img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        /* หัวข้อ */
+        .home h1 {
+            font-size: 45px;
+            margin: 10px 0;
+        }
+        /* ข้อความ */
+        .home p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        /* ปุ่ม */
+        .btn {
+            display: inline-block;
+            padding: 15px 45px;
+            background: white;
+            color: #2563eb;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        /* ตอนเอาเมาส์ชี้ปุ่ม */
+        .btn:hover {
+            transform: scale(1.05);
+            background: #eeeeee;
+        }
+        /* สำหรับโทรศัพท์ */
+        @media (max-width: 600px) {
+            .home img {
+                width: 230px;
+                height: 230px;
+            }
+            .home h1 {
+                font-size: 35px;
+            }
+            .home p {
+                font-size: 17px;
+            }
+            .btn {
+                padding: 13px 35px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- หน้า Home -->
+    <div class="home">
+        <!--
+            รูปอยู่ตรงนี้
+            ถ้ารูปชื่อ home.jpg
+            ให้ใช้แบบนี้
+        -->
+        <img
+            src="home.jpg"
+            alt="รูปหน้า Home"
+        >
+        <!-- หัวข้อ -->
+        <h1>
+            ยินดีต้อนรับ
+        </h1>
+        <!-- ข้อความ -->
+        <p>
+            เว็บไซต์ Portfolio ของ วชิรญาณ์ คลังแก้ว
+        </p>
+        <!-- ปุ่มเข้าสู่เว็บไซต์ -->
+        <a
+            href="portfolio.html"
+            class="btn"
+        >
+            เข้าสู่เว็บไซต์
+        </a>
+    </div>
+</body>
+</html>
