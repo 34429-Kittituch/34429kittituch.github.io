@@ -1,1 +1,69 @@
-
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #111827, #2563eb);
+        }
+        .home {
+            text-align: center;
+            color: white;
+        }
+        /* รูปภาพ */
+        .home img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 25px;
+        }
+        .home h1 {
+            font-size: 45px;
+            margin: 10px 0;
+        }
+        .home p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        /* ปุ่ม */
+        .btn {
+            display: inline-block;
+            padding: 15px 45px;
+            background: white;
+            color: #2563eb;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="home">
+        <!-- รูปภาพ -->
+        <img src="home.jpg" alt="รูปหน้า Home">
+        <h1>ยินดีต้อนรับ</h1>
+        <p>เว็บไซต์ของ Kittituch</p>
+        <!-- ปุ่มไปหน้าเว็บไซต์ -->
+        <a href="index.html" class="btn">
+            เข้าสู่เว็บไซต์
+        </a>
+    </div>
+</body>
+</html>
