@@ -613,29 +613,50 @@
 
     <!-- JavaScript สำหรับระบบเปลี่ยนหน้า -->
     <script>
-        function switchPage(pageNumber) {
-            // 1. ซ่อนทุกหน้า
-            const sections = document.querySelectorAll('.page-section');
-            sections.forEach(sec => sec.classList.remove('active'));
+            function switchPage(pageNumber) {
+        // 1. ซ่อนทุกหน้า
+        const sections = document.querySelectorAll('.page-section');
+        sections.forEach(sec => sec.classList.remove('active'));
 
-            // 2. ปลดล็อกปุ่ม Nav ทุกปุ่ม
-            const navButtons = document.querySelectorAll('.nav-btn');
-            navButtons.forEach(btn => btn.classList.remove('active'));
+        // 2. ปลดล็อกปุ่ม Nav ทุกปุ่ม
+        const navButtons = document.querySelectorAll('.nav-btn');
+        navButtons.forEach(btn => btn.classList.remove('active'));
 
-            // 3. แสดงหน้าที่เลือก
-            const targetSection = document.getElementById(`page-${pageNumber}`);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
-
-            // 4. ไฮไลท์ปุ่ม Nav หน้าปัจจุบัน
-            if (navButtons[pageNumber - 1]) {
-                navButtons[pageNumber - 1].classList.add('active');
-            }
-
-            // เลื่อนหน้าจอขึ้นบนสุดเมื่อเปลี่ยนหน้า
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        // 3. แสดงหน้าที่เลือก
+        const targetSection = document.getElementById(`page-${pageNumber}`);
+        if (targetSection) {
+            targetSection.classList.add('active');
         }
+
+        // 4. ไฮไลท์ปุ่ม Nav หน้าปัจจุบัน
+        if (navButtons[pageNumber - 1]) {
+            navButtons[pageNumber - 1].classList.add('active');
+        }
+
+        // เลื่อนหน้าจอขึ้นบนสุดเมื่อเปลี่ยนหน้า
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+
+    /* ===== ปุ่มเข้าสู่ Portfolio ===== */
+    function enterPortfolio() {
+
+        const cover = document.getElementById("cover-page");
+
+        cover.style.transition = "opacity 0.5s ease";
+        cover.style.opacity = "0";
+
+        setTimeout(function() {
+
+            cover.style.display = "none";
+
+            // เปิดหน้าคำนำ
+            switchPage(1);
+
+        }, 500);
+    }
+
+</script>
     </script>
 </body>
 </html>
