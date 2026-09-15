@@ -301,6 +301,97 @@
             .profile-container { flex-direction: column; text-align: center; }
             .info-list { width: 100%; text-align: left; }
         }
+     /* ===== หน้าปก ===== */
+
+.cover-page {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        135deg,
+        #eee9ff 0%,
+        #e5f3ff 100%
+    );
+
+    padding: 20px;
+}
+
+.cover-box {
+    width: 100%;
+    max-width: 850px;
+
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+
+    border-radius: 30px;
+    padding: 50px 30px;
+
+    text-align: center;
+
+    box-shadow: 0 15px 40px rgba(80,70,150,0.15);
+}
+
+.cover-profile {
+    width: 240px;
+    height: 240px;
+
+    object-fit: cover;
+    border-radius: 50%;
+
+    border: 7px solid white;
+
+    box-shadow: 0 10px 30px rgba(70,60,140,0.25);
+
+    margin-bottom: 25px;
+}
+
+.cover-box h1 {
+    color: #5b4ba8;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.cover-box p {
+    color: #5d5575;
+    font-size: 1.2rem;
+}
+
+.cover-box .welcome {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.cover-box button {
+    border: none;
+    padding: 14px 40px;
+    border-radius: 40px;
+
+    background: linear-gradient(
+        135deg,
+        #7b4fc6,
+        #4b9ee8
+    );
+
+    color: white;
+
+    font-family: 'Kanit', sans-serif;
+    font-size: 1.05rem;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 20px rgba(91,75,168,0.25);
+
+    transition: 0.3s;
+}
+
+.cover-box button:hover {
+    transform: translateY(-3px);
+}
     </style>
 </head>
 <body>
