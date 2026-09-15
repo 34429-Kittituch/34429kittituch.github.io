@@ -408,6 +408,25 @@
 .cover-box button:hover {
     transform: translateY(-3px);
 }
+     .back-cover-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.back-cover-btn {
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #f97316, #fb923c);
+    color: white;
+    font-family: 'Kanit', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.back-cover-btn:hover {
+    transform: translateY(-3px);
+}
     </style>
 </head>
 <body>
@@ -641,6 +660,12 @@
         </section>
 
     </main>
+     <!-- ปุ่มกลับหน้าปก -->
+<div class="back-cover-container">
+    <button class="back-cover-btn" onclick="backToCover()">
+        🏠 กลับหน้าปก
+    </button>
+</div>
 
     <!-- JavaScript สำหรับระบบเปลี่ยนหน้า -->
     <script>
