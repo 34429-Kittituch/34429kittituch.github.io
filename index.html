@@ -711,8 +711,20 @@
 
         }, 500);
     }
+     function backToCover() {
+    const cover = document.getElementById("cover-page");
+
+    if (cover) {
+        cover.style.display = "flex";
+        cover.style.opacity = "1";
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
 
 </script>
-    </script>
 </body>
 </html>
